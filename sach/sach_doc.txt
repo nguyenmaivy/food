@@ -1,0 +1,10 @@
+Sach1#MS001#Nguyen Van A#1#NXB1#Văn Học#10000#50
+Sach2#MS002#Tran Thi B#2#NXB2#Lịch Sử#15000#30
+Sach3#MS003#Le Van C#3#NXB3#Nấu Ăn#12000#25
+Sach4#MS004#Pham Thi D#4#NXB4#Phiêu Lưu#18000#40
+Sach5#MS005#Hoang Van E#5#NXB5#Học Ngoại Ngữ#20000#20
+Sach6#MS006#Nguyen Thi F#6#NXB6#Kinh Doanh#22000#15
+Sach7#MS007#Tran Van G#7#NXB7#Tâm Lý#25000#10
+Sach8#MS008#Le Thi H#8#NXB8#Thể Thao#18000#20
+Sach9#MS009#Pham Van I#9#NXB9#Trinh Thám#30000#18
+Sach10#MS010#Ho Thi K#10#NXB10#Lịch Sử#28000#25
