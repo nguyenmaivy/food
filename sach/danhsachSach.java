@@ -3,7 +3,6 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-// import com.example.otherpackage.*;
 import java.util.*;
 public class danhsachSach {
 	public static Scanner sc = new Scanner(System.in);
@@ -16,6 +15,9 @@ public class danhsachSach {
 	}
 	public static void setSoluong(int soluong) {
 		danhsachSach.soluong = soluong;
+	}
+	public static newsach getSach(int i) {
+		return sach[i];
 	}
 	//nhập thông tin
 	public static void nhapdanhsach() {
@@ -41,21 +43,19 @@ public class danhsachSach {
 			int i;
 			while((line=br.readLine())!=null) {
 				String text[]=line.split("#");
-				if(sach==null) {
+				if(sach==null)
 					sach= new newsach[1];
-					i=0;
-				}else {
-					i=soluong;
+				else
 					sach=Arrays.copyOf(sach, sach.length+1);
-				}
+				i=sach.length-1;
 				if(text.length==8&&Trunglap(text[0])==null&&!text[3].matches(".\\d.*")&&text[6].matches("\\d+\\d*\\.?\\,?")&&text[7].matches("\\d+")&&danhsachTacgia.Trunglap(text[3])!=null&&danhsachNXB.Trunglap(text[4])!=null&&danhsachTheloai.Trunglap(text[5])!=null) {
 					if(sach[i]==null)
-						sach[i]= new newsach();
-					sach[i].capnhatsach(text[0], text[1], danhsachTacgia.Trunglap(text[3]), danhsachNXB.Trunglap(text[4]), danhsachTheloai.Trunglap(text[5]), Double.parseDouble(text[6]), Integer.parseInt(text[7]), 1);
+						sach[i]= new newsach(text[0], text[1], danhsachTacgia.Trunglap(text[3]), danhsachNXB.Trunglap(text[4]), danhsachTheloai.Trunglap(text[5]), Double.parseDouble(text[6]), Integer.parseInt(text[7]), 1);
+					//sach[i].capnhatsach(text[0], text[1], danhsachTacgia.Trunglap(text[3]), danhsachNXB.Trunglap(text[4]), danhsachTheloai.Trunglap(text[5]), Double.parseDouble(text[6]), Integer.parseInt(text[7]), 1);
 					i++;
-					soluong++;
 					}else sach=Arrays.copyOf(sach, sach.length-1);
 				}
+			soluong=sach.length;
 			br.close();
 			readfile.close();
 		}
@@ -100,7 +100,7 @@ public class danhsachSach {
 	}
 	//xuất thông tin
 	public static void xuatdanhsach() {
-		if(sach.length==0) {
+		if(sach==null) {
 			System.out.println("Khong co sach nao");
 			return;
 		}
@@ -114,17 +114,15 @@ public class danhsachSach {
 	//thêm thông tin đối tượng 
 	public static newsach Them() {
 		int i;
-		if(sach==null||sach[0]==null) {
+		if(sach==null||sach[0]==null)
 			sach = new newsach[1];
-			i=0;
-		}else {
+		else
 			sach=Arrays.copyOf(sach, sach.length+1);
-			i=soluong;
-		}
+		i=sach.length-1;
 		sach[i]=new newsach();
 		System.out.println("nhap thong tin sach");
 		sach[i].nhap();
-		soluong++;
+		soluong=sach.length;
 		return sach[i];
 	}
 	public static void ThemSach() {
@@ -135,7 +133,7 @@ public class danhsachSach {
 			if(sl.matches("\\d+")) {
 				so_luong_can_them=Integer.parseInt(sl);
 				if(so_luong_can_them==0) {
-					if(soluong==0)
+					if(sach==null)
 						System.out.println("Danh sach rong");
 					else
 						System.out.println("Khong them sach");
@@ -157,7 +155,7 @@ public class danhsachSach {
 		return -1;
 	}
 	public static void TimkiemSach() {
-		if(soluong==0) {
+		if(sach==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -195,7 +193,7 @@ public class danhsachSach {
 		}
 	}
 	public static void XoaSach() {
-		if(soluong==0) {
+		if(sach==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -229,7 +227,7 @@ public class danhsachSach {
 		return null;
 	}
 	public static void KhoiphucSach() {
-		if(soluong==0) {
+		if(sach==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -283,7 +281,7 @@ public class danhsachSach {
 		return sach[i];
 	}
 	public static void SuaSach() {
-		if(soluong==0) {
+		if(sach==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}

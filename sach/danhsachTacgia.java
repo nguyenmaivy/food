@@ -1,7 +1,6 @@
 package sach;
 import java.util.*;
 import java.io.*;
-// import com.example.otherpackage.*;
 public class danhsachTacgia {
 	public static Scanner sc = new Scanner(System.in);
 	private static int soluong=0;
@@ -38,21 +37,19 @@ public class danhsachTacgia {
 			int i;
 			while((line=br.readLine())!=null) {
 				String text[]=line.split("#");
-				if(tacgia==null) {
+				if(tacgia==null)
 					tacgia= new newtacgia[1];
-					i=0;
-				}else {
-					i=soluong;
+				else 
 					tacgia=Arrays.copyOf(tacgia, tacgia.length+1);
-				}
+				i=tacgia.length-1;
 				if(text.length==5&&text[0].matches("\\d+")&&Trunglap(text[0])==null&&!text[1].matches(".*\\d.*")&&text[2].matches("\\d+")) {
 					if(tacgia[i]==null)
-						tacgia[i]= new newtacgia();
-					tacgia[i].capnhattacgia(text[0],text[1], Integer.parseInt(text[2]), text[3], text[4], 1);
+						tacgia[i]= new newtacgia(text[0],text[1], Integer.parseInt(text[2]), text[3], text[4], 1);
+					//tacgia[i].capnhattacgia(text[0],text[1], Integer.parseInt(text[2]), text[3], text[4], 1);
 					i++;
-					soluong++;
 					}else tacgia=Arrays.copyOf(tacgia, tacgia.length-1);
 				}
+			soluong=tacgia.length;
 			br.close();
 			readfile.close();
 		}
@@ -98,7 +95,7 @@ public class danhsachTacgia {
 	}
 	//xuất thông tin
 	public static void xuatdanhsach() {
-		if(tacgia.length==0) {
+		if(tacgia==null) {
 			System.out.println("Khong co tac gia nao");
 			return;
 		}
@@ -112,17 +109,15 @@ public class danhsachTacgia {
 	//thêm thông tin đối tượng 
 	public static newtacgia Them() {
 		int i;
-		if(tacgia==null) {
+		if(tacgia==null)
 			tacgia= new newtacgia[1];
-			i=0;
-		}else {
-			i=soluong;
+		else
 			tacgia=Arrays.copyOf(tacgia, tacgia.length+1);
-		}
+		i=tacgia.length-1;
 		tacgia[i]=new newtacgia();
 		System.out.println("nhap thong tin tac gia");
 		tacgia[i].nhap();
-		soluong++;
+		soluong=tacgia.length;
 		return tacgia[i];
 	}
 	public static void ThemTacgia() {
@@ -133,7 +128,7 @@ public class danhsachTacgia {
 			if(sl.matches("\\d+")) {
 				so_luong_can_them=Integer.parseInt(sl);
 				if(so_luong_can_them==0) {
-					if(soluong==0)
+					if(tacgia==null)
 						System.out.println("Danh sach rong");
 					else
 						System.out.println("Khong them sach");
@@ -191,7 +186,7 @@ public class danhsachTacgia {
 		}
 	}
 	public static void XoaTacgia() {
-		if(soluong==0) {
+		if(tacgia==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -225,7 +220,7 @@ public class danhsachTacgia {
 		return null;
 	}
 	public static void KhoiphucTacgia() {
-		if(soluong==0) {
+		if(tacgia==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -278,7 +273,7 @@ public class danhsachTacgia {
 		return tacgia[i];
 	}
 	public static void SuaTacgia() {
-		if(soluong==0) {
+		if(tacgia==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}

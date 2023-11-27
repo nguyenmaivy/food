@@ -1,5 +1,5 @@
 package sach;
-// import com.example.otherpackage.*;
+
 public class newNXB extends NXB {
 
 	public newNXB() {

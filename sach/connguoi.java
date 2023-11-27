@@ -1,6 +1,5 @@
 package sach;
 import java.util.*;
-// import com.example.otherpackage.*;
 public abstract class connguoi{
 	public Scanner sc=new Scanner(System.in);
 	private String ten;
@@ -94,5 +93,5 @@ public abstract class connguoi{
 	public String xuat() {
 		return String.format("Ho va Ten: %-24s | Tuoi: %-3s | Gioi tinh: %-15s",ten,tuoi,gioitinh);
 	}
-
+		
 }

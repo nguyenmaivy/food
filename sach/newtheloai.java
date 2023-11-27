@@ -1,5 +1,5 @@
 package sach;
-// import com.example.otherpackage.*;
+
 public class newtheloai extends theloai {
 
 	public newtheloai() {

@@ -1,7 +1,7 @@
 package sach;
 import java.io.*;
 import java.util.*;
-// import com.example.otherpackage.*;
+
 public class danhsachTheloai {
 	public static Scanner sc = new Scanner(System.in);
 	private static int soluong=0;
@@ -38,21 +38,19 @@ public class danhsachTheloai {
 			int i;
 			while((line=br.readLine())!=null) {
 				String text[]=line.split("#");
-				if(theloai==null) {
+				if(theloai==null)
 					theloai= new newtheloai[1];
-					i=0;
-				}else {
-					i=soluong;
+				else 
 					theloai=Arrays.copyOf(theloai, theloai.length+1);
-				}
+				i=theloai.length-1;
 				if(text.length==2&&Trunglap(text[0])==null&&!text[0].isEmpty()) {
 					if(theloai[i]==null)
-						theloai[i]= new newtheloai();
-					theloai[i].capnhattheloai(text[0],text[1], 1);
-					i++;
-					soluong++;
+						theloai[i]= new newtheloai(text[0],text[1], 1);
+					//theloai[i].capnhattheloai(text[0],text[1], 1);
+					i++;				
 				}else theloai=Arrays.copyOf(theloai, theloai.length-1);
 			}
+			soluong=theloai.length;
 			br.close();
 			readfile.close();
 		}
@@ -111,17 +109,15 @@ public class danhsachTheloai {
 	//thêm thông tin đối tượng 
 	public static newtheloai Them() {
 		int i;
-		if(theloai==null&&soluong==0) {
+		if(theloai==null) 
 			theloai= new newtheloai[1];
-			i=0;
-		}else {
+		else 
 			theloai=Arrays.copyOf(theloai, theloai.length+1);
-			i=soluong;
-		}
+			i=theloai.length-1;
 		theloai[i]=new newtheloai();
 		System.out.println("nhap thong tin the loai");
 		theloai[i].nhap();
-		soluong++;
+		soluong=theloai.length;
 		return theloai[i];
 	}
 	public static void ThemTheloai() {
@@ -132,7 +128,7 @@ public class danhsachTheloai {
 			if(sl.matches("\\d+")) {
 				so_luong_can_them=Integer.parseInt(sl);
 				if(so_luong_can_them==0) {
-					if(soluong==0)
+					if(theloai==null)
 						System.out.println("Danh sach rong");
 					else
 						System.out.println("Khong them sach");
@@ -154,7 +150,7 @@ public class danhsachTheloai {
 			return -1;
 	}
 	public static void TimkiemTheloai() {
-		if(soluong==0) {
+		if(theloai==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -192,7 +188,7 @@ public class danhsachTheloai {
 		}
 	}
 	public static void XoaTheloai() {
-		if(soluong==0) {
+		if(theloai==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -227,7 +223,7 @@ public class danhsachTheloai {
 		return null;
 	}
 	public static void KhoiphucTheloai() {
-		if(soluong==0) {
+		if(theloai==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -279,7 +275,7 @@ public class danhsachTheloai {
 		return theloai[i];
 	}
 	public static void SuaTheloai() {
-		if(soluong==0) {
+		if(theloai==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}

@@ -1,7 +1,7 @@
 package sach;
 import java.io.*;
 import java.util.*;
-// import com.example.otherpackage.*;
+
 public class danhsachNXB {
 	public static Scanner sc = new Scanner(System.in);
 	private static int soluong=0;
@@ -36,21 +36,19 @@ public class danhsachNXB {
 			int i;
 			while((line=br.readLine())!=null) {
 				String text[]=line.split("#");
-				if(NXB==null) {
+				if(NXB==null)
 					NXB= new newNXB[1];
-					i=0;
-				}else {
-					i=soluong;
+				else
 					NXB=Arrays.copyOf(NXB, NXB.length+1);
-				}
+				i=NXB.length-1;
 				if(text.length==3&&Trunglap(text[0])==null&&text[1].matches("\\d+")) {
 					if(NXB[i]==null)
-						NXB[i]= new newNXB();
-					NXB[i].capnhatNXB(text[0], text[1], text[2], 1);
+						NXB[i]= new newNXB(text[0], text[1], text[2], 1);
+					//NXB[i].capnhatNXB(text[0], text[1], text[2], 1);
 					i++;
-					soluong++;
 				}else NXB=Arrays.copyOf(NXB, NXB.length-1);
 			}
+			soluong=NXB.length;
 			br.close();
 			readfile.close();
 		}
@@ -110,17 +108,15 @@ public class danhsachNXB {
 	//thêm thông tin đối tượng 
 	public static newNXB Them() {
 		int i;
-		if(NXB==null) {
+		if(NXB==null)
 			NXB= new newNXB[1];
-			i=0;
-		}else {
+		else
 			NXB=Arrays.copyOf(NXB, NXB.length+1);
-			i=soluong;
-		}
+		i=NXB.length-1;
 		NXB[i]=new newNXB();
 		System.out.println("nhap thong tin NXB");
 		NXB[i].nhap();
-		soluong++;
+		soluong=NXB.length;
 		return NXB[i];
 	}
 	public static void ThemNXB() {
@@ -153,7 +149,7 @@ public class danhsachNXB {
 			return -1;
 	}
 	public static void TimkiemNXB() {
-		if(soluong==0) {
+		if(NXB==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -191,7 +187,7 @@ public class danhsachNXB {
 		}
 	}
 	public static void XoaNXB() {
-		if(soluong==0) {
+		if(NXB==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -226,7 +222,7 @@ public class danhsachNXB {
 		return null;
 	}
 	public static void KhoiphucNXB() {
-		if(soluong==0) {
+		if(NXB==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}
@@ -280,7 +276,7 @@ public class danhsachNXB {
 		return NXB[i];
 	}
 	public static void SuaNXB() {
-		if(soluong==0) {
+		if(NXB==null) {
 			System.out.println("Danh sach rong");
 			return;
 		}

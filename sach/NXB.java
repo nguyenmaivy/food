@@ -1,6 +1,5 @@
 package sach;
 import java.util.*;
-// import com.example.otherpackage.*;
 public class NXB {
 	public Scanner sc=new Scanner(System.in);
 	private String tenNXB;
@@ -10,7 +9,7 @@ public class NXB {
 	public NXB() {
 	}
 	
-	public NXB(String tenNXB, String dcNXB, String sdtNXB, int trangthai) {
+	public NXB(String tenNXB, String sdtNXB, String dcNXB, int trangthai) {
 		this.tenNXB = tenNXB;
 		this.dcNXB = dcNXB;
 		this.sdtNXB = sdtNXB;

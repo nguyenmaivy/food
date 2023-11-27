@@ -1,6 +1,5 @@
 package sach;
 import java.util.*;
-// import com.example.otherpackage.*;
 public class sach {
 	public Scanner sc=new Scanner(System.in);
 	private String tensach;

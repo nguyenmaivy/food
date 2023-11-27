@@ -1,5 +1,5 @@
 package sach;
-// import com.example.otherpackage.*;
+
 public class newtacgia extends tacgia {
 	
 	public newtacgia() {

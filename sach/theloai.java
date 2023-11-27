@@ -1,5 +1,4 @@
 package sach;
-// import com.example.otherpackage.*;
 import java.util.*;
 enum check{
 	TRUE,

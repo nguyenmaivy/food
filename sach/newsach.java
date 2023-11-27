@@ -1,5 +1,5 @@
 package sach;
-// import com.example.otherpackage.*;/
+
 public class newsach extends sach {
 
 	public newsach() {

@@ -1,5 +1,4 @@
 package sach;
-// import com.example.otherpackage.*;
 public class tacgia extends connguoi{
 	private String quequan;
 	public int trangthai;
@@ -142,11 +141,6 @@ public class tacgia extends connguoi{
 	public String xuat() {
 		// TODO Auto-generated method stub
 		return String.format("Ma so tac gia: %-15s | %s | Quen quan: %-13s | Vai tro: %s",masotacgia,super.xuat(),quequan,vaitro);	
-	}
-	public static void main(String[] args) {
-		tacgia tc=new tacgia();
-		tc.nhap();	
-		tc.xuat();
 	}
 }
 
