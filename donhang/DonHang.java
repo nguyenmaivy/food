@@ -218,7 +218,9 @@ public class DonHang {
                 }
             }
         }
+        //nhap gia san pham
         dh.nhap();
+        //nhap phuong thuc thanh toan
         nhapPhuongThucThanhToan();
     }
     public void nhapPhuongThucThanhToan() {
@@ -253,23 +255,31 @@ public class DonHang {
         System.out.println("6. Sua phi giao");
         System.out.println("7. Sua thong tin phuong thuc thanh toan");
         System.out.println("8. Sua thong tin gia");
-        
+
         System.out.print("Nhap lua chon: ");
         int luaChon = Integer.parseInt(sc.nextLine());
 
         switch (luaChon) {
             case 1:
-                while (true) {
-                    System.out.println("Nhap ID don hang moi: ");
-                    String newMaDonHang = sc.nextLine();
-                    if (newMaDonHang.matches("\\d+")) {
-                        if (!this.maDonHang.equals(newMaDonHang)) {
-                            this.maDonHang = newMaDonHang;
-                            break;
-                        }
+            while (true) {
+                System.out.print("Nhap ID don hang moi: ");
+                String newMaDonHang = sc.nextLine();
+
+                // Check if the new ID is not the same as the current ID
+                if (!this.maDonHang.equals(newMaDonHang)) {
+                    // Check if the new ID is not duplicated with other order IDs
+                    if (!danhsachDonHang.trungLapMaDonHang(newMaDonHang)) {
+                        this.maDonHang = newMaDonHang;
+                        break;
+                    } else {
+                        System.out.println("ID da ton tai cho mot don hang khac. Vui long nhap lai.");
                     }
+                } else {
+                    System.out.println("ID trung voi ma don hang hien tai, vui long nhap lai.");
                 }
-                break;
+            }
+            break;
+
             case 2:
                 System.out.print("Nhap ma trang thai moi (1: Da dat, 2: Dang giao, 3: Da nhan): ");
                 this.trangThaiDonHang = Integer.parseInt(sc.nextLine());
@@ -342,7 +352,6 @@ public class DonHang {
                 trangThaiString = "Trang thai khong xac dinh";
                 break;
         }
-        
         return String.format("|ID don hang: %-5s|Trang thai: %-10s|Ngay dat: %tD|Ngay giao: %tD|Phi giao: %.2f %s %s %s",
                 maDonHang, trangThaiString, ngayDat, ngayGiao, tongChiPhi, khachHang.xuat(), phuongThucThanhToan.xuat(),dh.xuat());
         }

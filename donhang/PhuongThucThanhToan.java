@@ -132,7 +132,7 @@ public class PhuongThucThanhToan {
     }
 
     public String xuat() {
-        return String.format("Phuong thuc thanh toan: %-5s | Ngay thanh toan: %tD |", loaiPhuongThuc, ngayThanhToan);
+        return String.format("Phuong thuc thanh toan: %-3s | Ngay thanh toan: %tD |", loaiPhuongThuc, ngayThanhToan);
     }
 }
 

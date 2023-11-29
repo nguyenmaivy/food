@@ -139,7 +139,7 @@ public class danhsachDonHang {
             System.out.println("Khong co don hang nao.");
             return;
         }
-
+        System.out.println("--------Thong tin don hang--------");
         for (DonHang donHang : danhSachDonHang) {
             if (donHang != null && !donHang.isDeleted()) {
                 System.out.println(donHang.xuat());
@@ -378,5 +378,14 @@ public class danhsachDonHang {
                 soLuongThem = -1;
             }
         }
+    }
+    public static boolean trungLapMaDonHang(String maDonHang) {
+        for (int i = 0; i < soLuong; i++) {
+            if (danhSachDonHang[i] != null && danhSachDonHang[i].getMaDonHang() != null &&
+                danhSachDonHang[i].getMaDonHang().equals(maDonHang)) {
+                return true; // Duplicate order ID found
+            }
+        }
+        return false; // No duplicate order ID found
     }
 }
