@@ -1,0 +1,5 @@
+Chuyên viên võ thuật#BV001#Bảo vệ#1,500#Nguyễn Văn An#28#Nam
+Chuyên gia giám sát#BV002#Nhân viên An ninh#1,800#Trần Thị Bình#32#Nữ
+Chuyên gia phản ứng khẩn cấp#BV003#Trưởng nhóm#2,200#Lê Minh Tuấn#35#Nam
+Chuyên gia đàm phán#BV004#Quản lý An ninh#2,500#Phạm Thị Mai#30#Nữ
+Chuyên gia công nghệ#BV005#Nhân viên An toàn thông tin#2,800#Nguyễn Hữu Nam#27#Nam
