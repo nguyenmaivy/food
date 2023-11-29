@@ -136,8 +136,8 @@ public class Sach {
 			System.out.print("Nhap gia ban '" + tenSach + "': ");
 			String newgiaban = sc.nextLine();
 			
-			if (newgiaban.matches("\\d+"))
-				this.giaban = Integer.parseInt(newgiaban);
+			if (newgiaban.matches("\\d+\\d*\\.?\\,?"))
+				this.giaban = Double.parseDouble(newgiaban);
 			else
 				this.giaban = 0;
 			

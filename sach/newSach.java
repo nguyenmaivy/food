@@ -238,8 +238,8 @@ public class newSach extends Sach {
 			System.out.print("Nhap gia ban '" + getTenSach() + "': ");
 			String newgiaban = sc.nextLine();
 			
-			if (newgiaban.matches("\\d+"))
-				this.setGiaban(Integer.parseInt(newgiaban));
+			if (newgiaban.matches("\\d+\\d*\\.?\\,?"))
+				this.setGiaban(Double.parseDouble(newgiaban));
 			else
 				this.setGiaban(0);
 			
@@ -341,7 +341,7 @@ public class newSach extends Sach {
 				System.out.print("Nhap Gia ban moi cua Sach: ");
 				String newgiaban = sc.nextLine();
 				
-				if (newgiaban.matches("\\d+") && Double.parseDouble(newgiaban) != this.getGiaban()
+				if (newgiaban.matches("\\d+\\d*\\.?\\,?") && Double.parseDouble(newgiaban) != this.getGiaban()
 						&& Double.parseDouble(newgiaban) > 0 && Double.parseDouble(newgiaban) < 100000000) {
 					this.setGiaban(Integer.parseInt(newgiaban));
 					exitLoop = true;
