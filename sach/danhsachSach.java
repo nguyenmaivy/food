@@ -25,6 +25,13 @@ public class danhsachSach {
 	public static newSach getSach(int i) {
 		return Sach[i];
 	}
+	public static newSach[] getSach() {
+		return Sach;
+	}
+
+	public static void setSach(newSach[] sach) {
+		Sach = sach;
+	}
 
 	// nhập thông tin
 	public static void nhapdanhsach() {

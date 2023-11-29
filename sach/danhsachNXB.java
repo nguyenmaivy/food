@@ -16,6 +16,16 @@ public class danhsachNXB {
 	public static void setSoluong(int sl) {
 		soluong = sl;
 	}
+	public static newNXB getNXB(int i) {
+		return NXB[i];
+	}
+	public static newNXB[] getNXB() {
+		return NXB;
+	}
+
+	public static void setNXB(newNXB[] nXB) {
+		NXB = nXB;
+	}
 
 	// nhập thông tin
 	public static void nhapdanhsach() {
