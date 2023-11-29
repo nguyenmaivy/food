@@ -53,10 +53,10 @@ public class danhsachKhachHang {
 					i=soLuong;
 					khachHang=Arrays.copyOf(khachHang, khachHang.length+1);
 				}
-				if(text.length==5&&text[0].matches("\\d+")&&trungLap(text[0])==null&&!text[1].matches(".*\\d.*")&&text[2].matches("\\d+")) {
+				if(text.length==4&&text[0].matches("\\d+")&&trungLap(text[0])==null&&!text[1].matches("\\d+")) {
 					if(khachHang[i]==null)
 						khachHang[i]= new newKhachHang();
-					khachHang[i].capNhatKhachHang(text[0], text[1], Integer.parseInt(text[2]), text[3]);
+					khachHang[i].capNhatKhachHang(text[0],text[1], Integer.parseInt(text[2]), text[3],1);
 					i++;
 					soLuong++;
 					}else khachHang=Arrays.copyOf(khachHang, khachHang.length-1);
@@ -71,7 +71,7 @@ public class danhsachKhachHang {
 	public static void ghifile(String filename) {
 		try {
 			FileWriter writefile=new FileWriter(filename);
-			FileWriter bin=new FileWriter("C:\\Sach_OOP\\final0\\khachhang_ghi.txt");
+			FileWriter bin=new FileWriter("C:\\Sach_OOP\\sach\\khachhang_ghi.txt");
 			int i=0;
 			if(khachHang==null) {
 				System.out.println("Danh sach rong");
@@ -80,7 +80,7 @@ public class danhsachKhachHang {
 				return;
 			}
 			while(i<khachHang.length&&khachHang[i]!=null){
-				if(khachHang[i].trangThai==1)
+				if(khachHang[i].getTrangThai()==1)
 					writefile.write(khachHang[i].getId()+"#"+khachHang[i].getTen()+"#"+khachHang[i].getTuoi()+"#"+khachHang[i].getGioitinh()+"\n");
 				else 
 					bin.write(khachHang[i].getId()+"#"+khachHang[i].getTen()+"#"+khachHang[i].getTuoi()+"#"+khachHang[i].getGioitinh()+"\n");
@@ -110,13 +110,13 @@ public class danhsachKhachHang {
 			System.out.println("Khong co khach hang nao.");
 			return;
 		}
-		System.out.println("+------------------------DANH SACH KHACH HANG----------------------+");
+		System.out.println("+-----------------------------------DANH SACH KHACH HANG----------------------------------+");
 		for(int i=0;i<khachHang.length;i++){
 			if(khachHang[i]!=null&&khachHang[i].trangThai==1){
 				System.out.println(khachHang[i].xuat());
 			}
 		}
-		System.out.println("+------------------------------------------------------------------+");
+		System.out.println("+-----------------------------------------------------------------------------------------+");
 	}
 	//them thong  tin khach hang
 	public static newKhachHang them(){
@@ -167,9 +167,9 @@ public class danhsachKhachHang {
 	
 	public static void timKiemKhachHang() {
 		while (true) {
-			System.out.print("Nhap ma so tac gia can tim: ");
-			String masotacgia = sc.nextLine();
-			int i = timKiem(masotacgia);
+			System.out.print("Nhap ma so khach hang can tim: ");
+			String masokhachhang = sc.nextLine();
+			int i = timKiem(masokhachhang);
 			
 			if (i == -1) {
 				System.out.println("Khong tim thay !");
@@ -223,7 +223,7 @@ public class danhsachKhachHang {
 			if (sl.matches("\\d+")) {
 				soLuongCanXoa = Integer.parseInt(sl);
 				if (soLuongCanXoa == 0) {
-					System.out.println("Khong xoa tac gia");
+					System.out.println("Khong xoa khach hang");
 					return;
 				}
 				if (soLuongCanXoa > khachHang.length) {
@@ -255,6 +255,14 @@ public class danhsachKhachHang {
 			}
 		}
 	}
+	public static void hienThiKhachHangBiXoa() {
+		System.out.println("Danh sach khach hang da bi xoa:");
+		for (int i = 0; i < soLuong; i++) {
+			if (khachHang[i].trangThai == 0) {
+				System.out.println("ID: " + khachHang[i].getId() + ", Ten: " + khachHang[i].getTen() + ", Tuoi: " + khachHang[i].getTuoi() +", Gioi tinh: "+ khachHang[i].getGioitinh()+ " (Da bi xoa)");
+			}
+		}
+	}
 	//khoi phuc thong tin da xoa
 	public static newKhachHang khoiPhuc(String idKhachHang_canKhoiPhuc){
 		int i;
@@ -282,6 +290,7 @@ public class danhsachKhachHang {
 		while (soLuongCanKhoiPhuc == -1) {
 			System.out.print("Nhap so luong khach hang can khoi phuc (Khong vuot qua " + soKhachHangDaXoa + "): ");
 			String sl = sc.nextLine();
+			danhsachKhachHang.hienThiKhachHangBiXoa();
 			if (sl.matches("\\d+")) {
 				soLuongCanKhoiPhuc = Integer.parseInt(sl);
 				if (soLuongCanKhoiPhuc == 0) {
@@ -394,13 +403,13 @@ public class danhsachKhachHang {
             System.out.println("Danh sach rong");
             return;
         }
-        System.out.println("+-------------------Danh sach khach hang hien tai------------------+");
+        System.out.println("+------------------------------Danh sach khach hang hien tai------------------------------+");
         for (int i = 0; i < khachHang.length; i++) {
             if (khachHang[i] != null && khachHang[i].trangThai == 1) {
                 System.out.println(khachHang[i].xuat());
             }
         }
-		System.out.println("+------------------------------------------------------------------+");
+		System.out.println("+-----------------------------------------------------------------------------------------+");
     }
     public static KhachHang getKhachHang(int index) {
         if (index >= 0 && index < soLuong) {

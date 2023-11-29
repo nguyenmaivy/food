@@ -1,17 +1,11 @@
 package sach;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.FileReader;
+
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
+
 import java.util.Arrays;
 import java.util.Scanner;
-import java.util.Date;
+
 
 public class danhsachDonHang {
     private static Scanner sc = new Scanner(System.in);
@@ -32,50 +26,50 @@ public class danhsachDonHang {
         soLuong = sl;
     }
     //*PHAN DOC - GHI FILE *//
+/*
     public static void docfile(String filename) {
-    try {
-        FileReader readfile = new FileReader(filename);
-        BufferedReader br = new BufferedReader(readfile);
-        String line;
-        int i;
-
-        while ((line = br.readLine()) != null) {
-            String text[] = line.split("#");
-
-            if (danhSachDonHang == null) {
-                danhSachDonHang = new DonHang[1];
-                i = 0;
-            } else {
-                i = soLuong;
-                danhSachDonHang = Arrays.copyOf(danhSachDonHang, danhSachDonHang.length + 1);
+        try {
+            FileReader readfile = new FileReader(filename);
+            BufferedReader br = new BufferedReader(readfile);
+            String line;
+    
+            while ((line = br.readLine()) != null) {
+                String text[] = line.split("#");
+    
+                if (danhSachDonHang == null) {
+                    danhSachDonHang = new DonHang[1];
+                } else {
+                    danhSachDonHang = Arrays.copyOf(danhSachDonHang, danhSachDonHang.length + 1);
+                }
+    
+                // Kiểm tra định dạng và các điều kiện khác
+                if (text.length == 6) {
+                    int i = soLuong;
+    
+                    if (danhSachDonHang[i] == null) {
+                        danhSachDonHang[i] = new DonHang();
+                    }
+    
+                    // Chuyển đổi ngày từ chuỗi sang đối tượng Date
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
+                    Date ngayDat = dateFormat.parse(text[2]);
+                    Date ngayGiao = dateFormat.parse(text[3]);
+    
+                    // Cập nhật thông tin đơn hàng
+                    danhSachDonHang[i].capNhatDonHang(text[0], Integer.parseInt(text[1]), ngayDat, ngayGiao, text[4]);
+                    soLuong++;
+                } else {
+                    System.out.println("Dong khong hop le: " + line);
+                }
             }
-
-            // Kiểm tra định dạng và các điều kiện khác
-            if (text.length == 8 && !text[1].matches(".\\d.*") && text[6].matches("\\d+\\d*\\.?\\,?") && text[7].matches("\\d+")) {
-                if (danhSachDonHang[i] == null)
-                    danhSachDonHang[i] = new DonHang();
-
-                // Chuyển đổi ngày từ chuỗi sang đối tượng Date
-                SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-                Date ngayDat = dateFormat.parse(text[2]);
-                Date ngayGiao = dateFormat.parse(text[3]);
-
-                // Cập nhật thông tin đơn hàng
-                danhSachDonHang[i].capNhatDonHang(text[0], Integer.parseInt(text[1]), ngayDat, ngayGiao, text[4]);
-                i++;
-                soLuong++;
-            } else {
-                danhSachDonHang = Arrays.copyOf(danhSachDonHang, danhSachDonHang.length - 1);
-            }
+    
+            br.close();
+            readfile.close();
+        } catch (IOException | ParseException e) {
+            e.printStackTrace();
         }
-
-        br.close();
-        readfile.close();
-    } catch (IOException | ParseException e) {
-        e.printStackTrace();
     }
-}
-
+*/
     public static void ghifile(String filename) {
         try {
             FileWriter writefile = new FileWriter(filename);
@@ -232,7 +226,15 @@ public class danhsachDonHang {
             }
         }
     }
-
+    public static void hienThiDonHangBiXoa() {
+        System.out.println("Danh sach don hang da bi xoa:");
+        for (int i = 0; i < soLuong; i++) {
+            if (danhSachDonHang[i].getTrangThaiDonHang() == -1) {
+                System.out.println("Ma so don hang: " + danhSachDonHang[i].getMaDonHang()+" (Da bi xoa)");
+            }
+        }
+    }
+    
     // Khôi phục thông tin đã xóa
     public static DonHang khoiPhuc(String maSoDonHang_canKhoiPhuc) {
         for (int i = 0; i < danhSachDonHang.length; i++) {
@@ -251,15 +253,36 @@ public class danhsachDonHang {
             System.out.println("Danh sach rong");
             return;
         }
+    
+        // Check if there are any deleted orders
+        boolean coDonHangBiXoa = false;
+        for (int i = 0; i < soLuong; i++) {
+            if (danhSachDonHang[i].getTrangThaiDonHang() == -1) {
+                coDonHangBiXoa = true;
+                break;
+            }
+        }
+    
+        if (!coDonHangBiXoa) {
+            System.out.println("Khong co don hang nao bi xoa. Khong can khoi phuc.");
+            return;
+        }
+    
         System.out.println("----Khoi phuc don hang----");
         int soLuongCanKhoiPhuc = -1;
         while (soLuongCanKhoiPhuc == -1) {
-            System.out.print("Nhap so luong don hang can khoi phuc (Khong vuot qua " + danhSachDonHang.length + "): ");
+            System.out.print("Nhap so luong don hang can khoi phuc (Khong vuot qua " + soLuong + "): ");
             String sl = sc.nextLine();
+            danhsachDonHang.hienThiDonHangBiXoa();
             if (sl.matches("\\d+")) {
                 soLuongCanKhoiPhuc = Integer.parseInt(sl);
-                if (soLuongCanKhoiPhuc > danhSachDonHang.length)
+                if (soLuongCanKhoiPhuc == 0) {
+                    System.out.println("Khong khoi phuc don hang");
                     return;
+                }
+                if (soLuongCanKhoiPhuc > soLuong)
+                    return;
+    
                 for (int i = 0; i < soLuongCanKhoiPhuc; i++) {
                     System.out.print("Nhap ID don hang can khoi phuc: ");
                     String maSoDonHang_canKhoiPhuc = sc.nextLine();
@@ -269,6 +292,7 @@ public class danhsachDonHang {
                 soLuongCanKhoiPhuc = -1;
         }
     }
+    
 
     // Chỉnh sửa thông tin
     public static DonHang sua(String maSoDonHang_canSua) {

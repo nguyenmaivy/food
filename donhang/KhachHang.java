@@ -53,7 +53,7 @@ public class KhachHang  extends connguoi {
 		switch(chon) {
 		case 1:
 			while(!exitLoop) {
-				System.out.println("Nhap Ma so moi cua Tac gia");
+				System.out.println("Nhap Ma so moi cua khach hang");
 				String newId=sc.nextLine();
 				if(newId.matches("\\d+")) {
 					if (!this.id.equals(newId)) {
@@ -96,11 +96,12 @@ public class KhachHang  extends connguoi {
 			break;
 	}
 }
-    public void capNhatKhachHang(String id,String ten, int tuoi, String gioiTinh) {
+    public void capNhatKhachHang(String id,String ten, int tuoi, String gioiTinh, int trangThai) {
 		this.setTen(ten);
 		this.setTuoi(tuoi);
 		this.setGioitinh(gioiTinh);
 		this.id=id;
+		this.trangThai=trangThai;
 	}
 	
 @Override

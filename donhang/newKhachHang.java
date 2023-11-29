@@ -177,7 +177,7 @@ public class newKhachHang extends KhachHang {
 						}
 					}
 					if(new_Id!=null) {
-							capNhatKhachHang(new_Id.getId(),new_Id.getTen(),new_Id.getTuoi(),new_Id.getGioitinh());
+							capNhatKhachHang(new_Id.getId(),new_Id.getTen(),new_Id.getTuoi(),new_Id.getGioitinh(),new_Id.getTrangThai());
 							exitLoop=true;
 							return;
 

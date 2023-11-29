@@ -352,7 +352,7 @@ public class DonHang {
                 trangThaiString = "Trang thai khong xac dinh";
                 break;
         }
-        return String.format("|ID don hang: %-5s|Trang thai: %-10s|Ngay dat: %tD|Ngay giao: %tD|Phi giao: %.2f %s %s %s",
+        return String.format("|ID-DH: %-5s|Trang thai: %-10s|Ngay dat: %tD|Ngay giao: %tD|Phi giao: %.2f %s %s %s",
                 maDonHang, trangThaiString, ngayDat, ngayGiao, tongChiPhi, khachHang.xuat(), phuongThucThanhToan.xuat(),dh.xuat());
         }
 

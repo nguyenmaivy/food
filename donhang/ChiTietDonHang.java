@@ -48,7 +48,7 @@ class ChiTietDonHang{
         return so_luong_moi_loai;
     }
     public void nhap() {
-        Boolean exitLoop = false;
+        //Boolean exitLoop = false;
     
         while (true) {
             System.out.print("Nhap so luong loai sach can mua: ");
@@ -67,24 +67,47 @@ class ChiTietDonHang{
     
                     if (location != -1) {
                         sach new_masach = danhsachSach.getSach(location);
-                        sach[i] = new newsach(new_masach.getTensach(), new_masach.getMasach(), new_masach.getTacgia(), new_masach.getNXB(), new_masach.getTheloai(), new_masach.getGiaban(), new_masach.getSoluong(), 1);
-                        so_luong_moi_loai[i] = 0;
     
-                        while (so_luong_moi_loai[i] <= 0 || so_luong_moi_loai[i] > new_masach.getSoluong()) {
-                            System.out.print("Nhap so luong sach \"" + sach[i].getTensach() + "\" can mua (khong vuot qua so luong co san " + new_masach.getSoluong() + "): ");
+                        // Check if the quantity in danhSachSach is zero
+                        if (new_masach.getSoluong() == 0) {
+                            System.out.println("Sach \"" + new_masach.getTensach() + "\" da het. Vui long chon sach khac.");
+                            continue;
+                        }
+    
+                        // Reduce the quantity in danhSachSach
+                        int soLuongTrongDanhSach = new_masach.getSoluong();
+                        int soLuongCanMua = 0;
+    
+                        while (true) {
+                            System.out.print("Nhap so luong sach \"" + new_masach.getTensach() + "\" can mua (khong vuot qua so luong co san " + soLuongTrongDanhSach + "): ");
                             String sl = sc.nextLine();
     
                             if (sl.matches("\\d+")) {
-                                so_luong_moi_loai[i] = Integer.parseInt(sl);
+                                soLuongCanMua = Integer.parseInt(sl);
+    
+                                if (soLuongCanMua <= soLuongTrongDanhSach) {
+                                    break;
+                                } else {
+                                    System.out.println("So luong mua vuot qua so luong co san. Vui long nhap lai.");
+                                }
                             } else {
-                                so_luong_moi_loai[i] = 0;
+                                System.out.println("Nhap khong hop le. Vui long nhap lai.");
                             }
                         }
+    
+                        // Update danhSachSach
+                        new_masach.setSoluong(soLuongTrongDanhSach - soLuongCanMua);
+    
+                        // Update ChiTietDonHang
+                        sach[i] = new newsach(new_masach.getTensach(), new_masach.getMasach(), new_masach.getTacgia(), new_masach.getNXB(), new_masach.getTheloai(), new_masach.getGiaban(), new_masach.getSoluong(), 1);
+                        so_luong_moi_loai[i] = soLuongCanMua;
+    
                         i++;
                     } else {
                         System.out.println("Khong tim thay sach.");
                         System.out.println("1. Xem lai sach da nhap");
-                        System.out.println("2. Nhap lai Ma sach");
+                        System.out.println("2. Nhap ma sach khac");
+                        System.out.println("3. Tao them sach ");
                         System.out.print("Nhap lua chon: ");
                         int luaChon = Integer.parseInt(sc.nextLine());
     
@@ -95,6 +118,10 @@ class ChiTietDonHang{
                                 break;
                             case 2:
                                 // Nhập lại Ma sach
+                                break;
+                            case 3:
+                                // Nhập thêm sách
+                                danhsachSach.nhapdanhsach();
                                 break;
                             default:
                                 System.out.println("Lua chon khong hop le.");
@@ -108,6 +135,8 @@ class ChiTietDonHang{
         //this.trangthai=1;
     }
     
+    
+    
     public double tonghoadon(){
         double tong=0.0;
         for(int i=0;i<sach.length;i++){
@@ -120,7 +149,7 @@ class ChiTietDonHang{
     
         if (this.sach != null) {
             for (int i = 0; i < sach.length; i++) {
-                result.append(String.format("Ten sach: %s gia: %.2f So luong:x%d ", sach[i].getTensach(), sach[i].getGiaban(), so_luong_moi_loai[i]));
+                result.append(String.format("Ten sach: %s, gia: %.2f, So luong:x%d ", sach[i].getTensach(), sach[i].getGiaban(), so_luong_moi_loai[i]));
             }
         }
     
