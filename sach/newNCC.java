@@ -3,7 +3,8 @@ package sach;
 import java.util.Arrays;
 
 public class newNCC extends NCC {
-	private newSach sach[]=Arrays.copyOf(danhsachSach.getSach(),danhsachSach.getSach().length);
+	private newSach sach[] = Arrays.copyOf(danhsachSach.getSach(), danhsachSach.getSach().length);
+
 	public newNCC() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -13,7 +14,7 @@ public class newNCC extends NCC {
 		super(tenNCC, dcNCC, sdtNCC, trangthai);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public newSach[] getSach() {
 		return sach;
 	}
@@ -24,12 +25,12 @@ public class newNCC extends NCC {
 
 	public void nhap() {
 		while (this.getTenNCC() == null || this.getTenNCC().isEmpty()) {
-			
+
 			System.out.print("Nhap Ten NCC sach: ");
 			String newtenNCC = sc.nextLine();
-			
+
 			NCC new_NCC = danhsachNCC.Trunglap(newtenNCC);
-			
+
 			if (new_NCC == null) {
 				this.setTenNCC(newtenNCC);
 				break;
@@ -40,9 +41,9 @@ public class newNCC extends NCC {
 				System.out.println("1.Khoi phuc thong tin NCC ");
 				System.out.println("2.Khoi phuc va Sua thong tin NCC");
 				System.out.println("3.Tao NCC moi");
-				
+
 				int luachon_1 = Integer.parseInt(sc.nextLine());
-				
+
 				switch (luachon_1) {
 				case 1:
 					danhsachNCC.Khoiphuc(newtenNCC);
@@ -62,39 +63,40 @@ public class newNCC extends NCC {
 		while (this.getsdtNCC() == null || this.getsdtNCC().isEmpty()) {
 			System.out.print("Nhap So dien thoai NCC: ");
 			String newsdtNCC = sc.nextLine();
-			
+
 			if (newsdtNCC.matches("\\d+"))
 				this.setsdtNCC(newsdtNCC);
 			else
 				this.setsdtNCC(null);
-			
+
 		}
-		
+
 		while (this.getDcNCC() == null || this.getDcNCC().isEmpty()) {
 			System.out.print("Nhap Dia chi NCC: ");
 			this.setDcNCC(sc.nextLine());
 		}
-		
+
 		this.trangthai = 1;
 	}
-@Override
+
+	@Override
 	public void suathongtin() {
 		System.out.println("1.Sua ten NCC");
 		System.out.println("2.Sua So dien thoai NBX");
 		System.out.println("3.Sua Dia chi NCC");
 		System.out.print("Nhap lua chon: ");
-		
+
 		int luachon = Integer.parseInt(sc.nextLine());
 		boolean exitLoop = false;
-		
+
 		switch (luachon) {
 		case 1:
 			while (!exitLoop) {
 				System.out.println("Nhap ten NCC moi");
 				String newtenNCC = sc.nextLine();
-				
+
 				NCC new_NCC = danhsachNCC.Trunglap(newtenNCC);
-				
+
 				if (new_NCC == null && !this.getTenNCC().equals(newtenNCC)) {
 					this.setTenNCC(newtenNCC);
 					exitLoop = true;
@@ -107,9 +109,9 @@ public class newNCC extends NCC {
 					System.out.println("1.Khoi phuc NCC");
 					System.out.println("2.Sua va khoi phuc thong tin NCC");
 					System.out.println("3.Thoat");
-					
+
 					int luachon_1 = Integer.parseInt(sc.nextLine());
-					
+
 					switch (luachon_1) {
 					case 1:
 						danhsachNCC.Khoiphuc(newtenNCC);
@@ -124,31 +126,31 @@ public class newNCC extends NCC {
 						return;
 					}
 				}
-				
+
 			}
 			break;
 		case 2:
 			while (!exitLoop) {
 				System.out.print("Nhap so dien thoai moi cua NCC: ");
 				String newsdtNCC = sc.nextLine();
-				
+
 				if (newsdtNCC.matches("\\d+") && !newsdtNCC.equals(this.getsdtNCC())) {
 					this.setsdtNCC(newsdtNCC);
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		case 3:
 			while (!exitLoop) {
 				System.out.print("Nhap Dia chi moi cua NCC: ");
 				String newdcNCC = sc.nextLine();
-				
+
 				if (!newdcNCC.equals(this.getDcNCC())) {
 					this.setDcNCC(newdcNCC);
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		default:
@@ -161,19 +163,19 @@ public class newNCC extends NCC {
 		System.out.println("2.Sua So dien thoai NCC");
 		System.out.println("3.Sua Dia chi NCC");
 		System.out.print("Nhap lua chon: ");
-		
+
 		int luachon = Integer.parseInt(sc.nextLine());
 		boolean exitLoop = false;
-		
+
 		switch (luachon) {
 		case 1:
 			while (!exitLoop) {
 				NCC new_tenNCC = new NCC();
 				System.out.print("Nhap Ten moi cua NCC: ");
 				String newtenNCC = sc.nextLine();
-				
+
 				new_tenNCC = danhsachNCC.Trunglap(newtenNCC);
-				
+
 				if (!exitLoop && this.getTenNCC() != null && !newtenNCC.equals(this.getTenNCC())) {
 					if (new_tenNCC == null) {
 						this.setTenNCC(newtenNCC);
@@ -185,9 +187,9 @@ public class newNCC extends NCC {
 							System.out.println("1.Nhan thon tin NCC ");
 							System.out.println("2.Nhan va Sua thong tin NCC");
 							System.out.println("3.Thoat");
-							
+
 							int luachon_1 = Integer.parseInt(sc.nextLine());
-							
+
 							switch (luachon_1) {
 							case 1:
 								System.out.println("Da khoi phuc");
@@ -199,15 +201,15 @@ public class newNCC extends NCC {
 							default:
 								return;
 							}
-							
+
 						} else {
 							System.out.println("NCC da bi xoa du lieu - hay lua chon:");
 							System.out.println("1.Khoi phuc va Nhan thong tin NCC ");
 							System.out.println("2.Khoi phuc va Sua thong tin NCC");
 							System.out.println("3.Thoat");
-							
+
 							int luachon_1 = Integer.parseInt(sc.nextLine());
-							
+
 							switch (luachon_1) {
 							case 1:
 								new_tenNCC = danhsachNCC.Khoiphuc(newtenNCC);
@@ -224,37 +226,37 @@ public class newNCC extends NCC {
 						}
 					}
 				}
-				
+
 				if (new_tenNCC != null) {
 					capnhatNCC(new_tenNCC.getTenNCC(), new_tenNCC.getsdtNCC(), new_tenNCC.getDcNCC(), 1);
 					exitLoop = true;
 					return;
 				}
-				
+
 			}
 			break;
 		case 2:
 			while (!exitLoop) {
 				System.out.print("Nhap so dien thoai moi cua NCC: ");
 				String newsdtNCC = sc.nextLine();
-				
+
 				if (newsdtNCC.matches("\\d+") && !newsdtNCC.equals(this.getsdtNCC())) {
 					this.setsdtNCC(newsdtNCC);
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		case 3:
 			while (!exitLoop) {
 				System.out.print("Nhap Dia chi moi cua NCC: ");
 				String newdcNCC = sc.nextLine();
-				
+
 				if (!newdcNCC.equals(this.getDcNCC())) {
 					this.setDcNCC(newdcNCC);
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		default:

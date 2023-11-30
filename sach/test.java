@@ -45,5 +45,6 @@ public class test {
 			danhsachTacGia.ghifile("D:\\java\\java_project\\src\\sach\\TacGia_ghi.txt");;
 			danhsachSach.docfile("D:\\java\\java_project\\src\\sach\\sach_doc.txt");
 			danhsachSach.ghifile("D:\\java\\java_project\\src\\sach\\sach_ghi.txt");
+			NhapKho.menu();
 		}
 }

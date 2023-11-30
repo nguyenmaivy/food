@@ -55,27 +55,27 @@ public class NCC {
 		while (this.tenNCC == null || this.tenNCC.isEmpty()) {
 			System.out.print("Nhap Ten NCC sach: ");
 			String newtenNCC = sc.nextLine();
-			
+
 			this.tenNCC = newtenNCC;
 			break;
 		}
-		
+
 		while (this.sdtNCC == null || this.sdtNCC.isEmpty()) {
 			System.out.print("Nhap So dien thoai NCC: ");
 			String newsdtNCC = sc.nextLine();
-			
+
 			if (newsdtNCC.matches("\\d+"))
 				this.sdtNCC = newsdtNCC;
 			else
 				this.sdtNCC = null;
-			
+
 		}
-		
+
 		while (this.dcNCC == null || this.dcNCC.isEmpty()) {
 			System.out.print("Nhap Dia chi NCC: ");
 			this.dcNCC = sc.nextLine();
 		}
-		
+
 		this.trangthai = 1;
 	}
 
@@ -84,45 +84,45 @@ public class NCC {
 		System.out.println("2.Sua So dien thoai NBX");
 		System.out.println("3.Sua Dia chi NCC");
 		System.out.print("Nhap lua chon: ");
-		
+
 		int luachon = Integer.parseInt(sc.nextLine());
 		boolean exitLoop = false;
-		
+
 		switch (luachon) {
 		case 1:
 			while (!exitLoop) {
 				System.out.println("Nhap ten NCC moi");
 				String newtenNCC = sc.nextLine();
-				
+
 				if (!this.tenNCC.equals(newtenNCC)) {
 					this.tenNCC = newtenNCC;
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		case 2:
 			while (!exitLoop) {
 				System.out.print("Nhap so dien thoai moi cua NCC: ");
 				String newsdtNCC = sc.nextLine();
-				
+
 				if (newsdtNCC.matches("\\d+") && !newsdtNCC.equals(sdtNCC)) {
 					this.sdtNCC = newsdtNCC;
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		case 3:
 			while (!exitLoop) {
 				System.out.print("Nhap Dia chi moi cua NCC: ");
 				String newdcNCC = sc.nextLine();
-				
+
 				if (!newdcNCC.equals(dcNCC)) {
 					this.dcNCC = newdcNCC;
 					exitLoop = true;
 				}
-				
+
 			}
 			break;
 		default:
