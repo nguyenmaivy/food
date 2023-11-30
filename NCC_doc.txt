@@ -1,3 +1,0 @@
-NCC1#123456789#123 Street, City
-NCC2#987654321#456 Avenue, Town
-NCC3#456123789#789 Road, Village
