@@ -2,10 +2,12 @@ package sach;
 
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.FileReader;
+import java.io.BufferedReader;
 import java.util.Arrays;
 import java.util.Scanner;
-
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class danhsachDonHang {
     private static Scanner sc = new Scanner(System.in);
@@ -28,29 +30,21 @@ public class danhsachDonHang {
     //*PHAN DOC - GHI FILE *//
 /*
     public static void docfile(String filename) {
-        try {
-            FileReader readfile = new FileReader(filename);
-            BufferedReader br = new BufferedReader(readfile);
-            String line;
-    
-            while ((line = br.readLine()) != null) {
-                String text[] = line.split("#");
-    
-                if (danhSachDonHang == null) {
-                    danhSachDonHang = new DonHang[1];
-                } else {
-                    danhSachDonHang = Arrays.copyOf(danhSachDonHang, danhSachDonHang.length + 1);
-                }
-    
-                // Kiểm tra định dạng và các điều kiện khác
-                if (text.length == 6) {
-                    int i = soLuong;
-    
-                    if (danhSachDonHang[i] == null) {
-                        danhSachDonHang[i] = new DonHang();
-                    }
-    
-                    // Chuyển đổi ngày từ chuỗi sang đối tượng Date
+		try {
+			FileReader readfile=new FileReader(filename);
+			BufferedReader br = new BufferedReader(readfile);
+			String line;
+			int i;
+			while((line=br.readLine())!=null) {
+				String text[]=line.split("#");
+				if(danhSachDonHang==null) {
+					danhSachDonHang= new DonHang[1];
+					i=0;
+				}else {
+					i=soLuong;
+					danhSachDonHang=Arrays.copyOf(danhSachDonHang, danhSachDonHang.length+1);
+				}
+                // Chuyển đổi ngày từ chuỗi sang đối tượng Date
                     SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yy");
                     Date ngayDat = dateFormat.parse(text[2]);
                     Date ngayGiao = dateFormat.parse(text[3]);
@@ -58,17 +52,21 @@ public class danhsachDonHang {
                     // Cập nhật thông tin đơn hàng
                     danhSachDonHang[i].capNhatDonHang(text[0], Integer.parseInt(text[1]), ngayDat, ngayGiao, text[4]);
                     soLuong++;
-                } else {
-                    System.out.println("Dong khong hop le: " + line);
-                }
-            }
-    
-            br.close();
-            readfile.close();
-        } catch (IOException | ParseException e) {
-            e.printStackTrace();
-        }
-    }
+				if(text.length==5&&text[0].matches("\\d+")&&!text[1].matches("\\d+") ) {
+					if(danhSachDonHang[i]==null)
+						danhSachDonHang[i]= new DonHang();
+					danhSachDonHang[i].capNhatDonHang(text[0], Integer.parseInt(text[1]), ngayDat,ngayGiao,text[4]);
+					i++;
+					soLuong++;
+					}else danhSachDonHang=Arrays.copyOf(danhSachDonHang, danhSachDonHang.length-1);
+				}
+			br.close();
+			readfile.close();
+		}
+		catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
 */
     public static void ghifile(String filename) {
         try {

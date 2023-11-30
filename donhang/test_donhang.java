@@ -30,14 +30,13 @@ public class test_donhang {
         danhsachPhuongThucThanhToan.xuatDanhSachPhuongThuc();*/
 
         //test file
-        
         //danhsachKhachHang.nhapDanhSach();
         //danhsachKhachHang.docfile("C:\\Sach_OOP\\sach\\khachhang_doc.txt");
         //danhsachKhachHang.ghifile("C:\\Sach_OOP\\sach\\khachhang_ghi.txt");
         //danhsachKhachHang.xuatDanhSach();
+        
         //danhsachSach.nhapdanhsach();
         //danhsachDonHang.nhapDanhSach();
-        
         //danhsachDonHang.ghifile("C:\\Sach_OOP\\sach\\donhang_ghi.txt");
         //danhsachDonHang.xuatDanhSach();
 

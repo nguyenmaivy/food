@@ -51,6 +51,10 @@ class ChiTietDonHang{
         //Boolean exitLoop = false;
     
         while (true) {
+            if (danhsachSach.getSach() == null) {
+                System.out.println("Chua co danh sach sach. Vui long tao danh sach sach truoc.");
+                System.exit(so_luong_loai_sach);
+            }
             System.out.print("Nhap so luong loai sach can mua: ");
             String soluong = sc.nextLine();
     
