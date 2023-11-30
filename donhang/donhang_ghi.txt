@@ -1,1 +1,0 @@
-|ID-DH: 1    |Trang thai: Da dat    |Ngay dat: 01/01/01|Ngay giao: 01/02/01|Phi giao: 1.00 |ID-KH: 1    |Ho va Ten: e                        | Tuoi: 1   | Gioi tinh: 1              | Phuong thuc thanh toan: e   | Ngay thanh toan: 01/01/01 | Ten sach: e, gia: 12000.00, So luong:x150 |Thanh tien: 1800000.00
